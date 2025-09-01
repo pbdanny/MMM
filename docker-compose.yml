@@ -1,0 +1,15 @@
+services:
+  jupyter:
+    image: robyn
+    build: .
+    container_name: jupyter-notebook 
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/app/notebooks:Z
+      - ./input:/app/input:ro,Z
+      - ./output:/app/output:Z
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - INPUT_PATH=/app/input
+      - OUTPUT_PATH=/app/output
